@@ -1,9 +1,9 @@
 #Introduction
-A C# way of controlling AdaFruit's NeoPixel hardware. Well not really. In reality the code still runs CircuitPython on the Adafruit-Blinka abstraction layer (which allows CircuitPyton to run on Pi), that in turn is abstracted by IronPython (which allows executing python in C#).
+A C# way of controlling AdaFruit's NeoPixel hardware on a Raspberry Pi. Well not really. In reality the code still runs CircuitPython on the Adafruit-Blinka abstraction layer (which allows CircuitPyton to run on Pi). C# just executes the python interpreter to run the scripts.
 
-This project s a minimalistic poc of such setup. Simple copy-paste instructions and a few lines of code. Tested on Raspberry Pi Zero W.
+In essence it is a minimalistic setup for running NeoPixel hardware "using C#". Simple copy-paste instructions and a few lines of code. Tested on Raspberry Pi Zero W.
 
-#Setup
+#Installation
 The steps are (describted in detail [here](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi "link"))
 ```
 # Update system
@@ -22,4 +22,4 @@ sudo python3 raspi-blinka.py
 sudo pip3 install adafruit-circuitpython-neopixel
 sudo pip3 install rpi_ws281x
 ```
-and that's that. The attached app demonstates how to call python code using IronPython nuget (better describted [here](https://www.needfulsoftware.com/IronPython/IronPythonCS "here")).
+and that's that. The attached app demonstates how to run a python script utilizing the NeoPixel driver.

@@ -1,22 +1,45 @@
-﻿using IronPython.Hosting;
-using Microsoft.Scripting.Hosting;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 
 namespace NeoPixelPiSharp
 {
     class Program
     {
-        const string script =
-            "import board" +
-            "import neopixel" +
-            "" +
-            "pixels = neopixel.NeoPixel(board.D18, 1, pixel_order = neopixel.RGBW)" +
-            "pixels.fill((0, 255, 0))";
 
         static void Main(string[] args)
         {
-            ScriptEngine pythonEngine = Python.CreateEngine();
-            ScriptSource pythonScript = pythonEngine.CreateScriptSourceFromString(script);
-            pythonScript.Execute();
+            const string PythonExecutable = "python3";
+
+            var ScriptFilename = $"{Guid.NewGuid()}.py";
+            var scriptContents = string.Join(Environment.NewLine, new[]
+            {
+                "import board",
+                "import neopixel",
+                "",
+                "print('START')",
+                "pixels = neopixel.NeoPixel(board.D18, 1, pixel_order = neopixel.RGBW)",
+                "pixels.fill((0, 255, 0))",
+                "print('END')"
+            });
+            File.WriteAllText(ScriptFilename, scriptContents);
+
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = PythonExecutable,
+                Arguments = ScriptFilename,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+            using (var process = Process.Start(processStartInfo))
+            using (var reader = process.StandardOutput)
+            {
+                string result = reader.ReadToEnd();
+                Console.Write(result);
+            }
+
+            File.Delete(ScriptFilename);
         }
     }
 }
