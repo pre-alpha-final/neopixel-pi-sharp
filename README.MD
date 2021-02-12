@@ -1,5 +1,5 @@
 #Introduction
-A C# way of controlling AdaFruit's NeoPixel hardware. Well not really. In reality the code still runs CircuitPython but it's abstracted by Adafruit-Blinka (which allows CircuitPyton to run on Pi), that in turn is abstracted by IronPython (which allows executing python in C#).
+A C# way of controlling AdaFruit's NeoPixel hardware. Well not really. In reality the code still runs CircuitPython on the Adafruit-Blinka abstraction layer (which allows CircuitPyton to run on Pi), that in turn is abstracted by IronPython (which allows executing python in C#).
 
 This project s a minimalistic poc of such setup. Simple copy-paste instructions and a few lines of code. Tested on Raspberry Pi Zero W.
 
