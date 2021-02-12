@@ -20,5 +20,6 @@ sudo python3 raspi-blinka.py
 ```
 # Install NeoPixel driver
 sudo pip3 install adafruit-circuitpython-neopixel
+sudo pip3 install rpi_ws281x
 ```
 and that's that. The attached app demonstates how to call python code using IronPython nuget (better describted [here](https://www.needfulsoftware.com/IronPython/IronPythonCS "here")).
