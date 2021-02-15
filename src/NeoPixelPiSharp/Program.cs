@@ -17,10 +17,8 @@ namespace NeoPixelPiSharp
                 "import board",
                 "import neopixel",
                 "",
-                "print('START')",
-                "pixels = neopixel.NeoPixel(board.D18, 1, pixel_order = neopixel.RGBW)",
+                "pixels = neopixel.NeoPixel(board.D18, 1, pixel_order = neopixel.GRB)",
                 "pixels.fill((0, 255, 0))",
-                "print('END')"
             });
             File.WriteAllText(ScriptFilename, scriptContents);
 
